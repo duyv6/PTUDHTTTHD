@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Luat_WebAPI.Models;
 
-namespace Luat_WebApi.Controllers
+namespace WebApi.Controllers
 {
     public class NhanVienController : ApiController
     {
