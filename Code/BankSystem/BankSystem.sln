@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BS.MM.Test", "BS.MM.Test\BS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BS.MM.WebApplication", "BS.MM.WebApplication\BS.MM.WebApplication.csproj", "{7F45D347-FAAB-4FA3-9110-F966694BFAB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luat_WebAPI", "Luat_WebAPI\Luat_WebAPI.csproj", "{AB02B7D2-A8DF-47A6-947E-19181C4FB79C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7F45D347-FAAB-4FA3-9110-F966694BFAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F45D347-FAAB-4FA3-9110-F966694BFAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F45D347-FAAB-4FA3-9110-F966694BFAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB02B7D2-A8DF-47A6-947E-19181C4FB79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB02B7D2-A8DF-47A6-947E-19181C4FB79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB02B7D2-A8DF-47A6-947E-19181C4FB79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB02B7D2-A8DF-47A6-947E-19181C4FB79C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

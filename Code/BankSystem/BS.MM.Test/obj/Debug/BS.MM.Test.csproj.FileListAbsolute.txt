@@ -1,0 +1,6 @@
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.Test\bin\Debug\BS.MM.Test.dll
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.Test\bin\Debug\BS.MM.Test.pdb
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.Test\obj\Debug\BS.MM.Test.csprojResolveAssemblyReference.cache
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.Test\obj\Debug\BS.MM.Test.dll
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.Test\obj\Debug\BS.MM.Test.pdb

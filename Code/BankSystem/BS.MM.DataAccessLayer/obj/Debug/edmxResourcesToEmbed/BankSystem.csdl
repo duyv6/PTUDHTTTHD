@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NganHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiNhanhNganHang">
+    <Key>
+      <PropertyRef Name="MaChiNhanhNganHang" />
+    </Key>
+    <Property Name="MaChiNhanhNganHang" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenChiNhanh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TruSoNganHang" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TruSoNganHang1" Relationship="Self.FK_ChiNhanhNganHang_TruSoNganHang" FromRole="ChiNhanhNganHang" ToRole="TruSoNganHang" />
+    <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_ChiNhanhNganHang" FromRole="ChiNhanhNganHang" ToRole="KhachHang" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK_NhanVien_ChiNhanhNganHang" FromRole="ChiNhanhNganHang" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="MaThe" />
+    </Key>
+    <Property Name="MaThe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MaxTienTinDung" Type="Int32" />
+    <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="CreditCard_history" Relationship="Self.FK_CreditCard_history_CreditCard" FromRole="CreditCard" ToRole="CreditCard_history" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_CreditCard_KhachHang" FromRole="CreditCard" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="CreditCard_history">
+    <Key>
+      <PropertyRef Name="MaGiaoDich_CreditCard" />
+    </Key>
+    <Property Name="MaGiaoDich_CreditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaTheCreditCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SoTien" Type="Int32" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="CreditCard" Relationship="Self.FK_CreditCard_history_CreditCard" FromRole="CreditCard_history" ToRole="CreditCard" />
+  </EntityType>
+  <EntityType Name="DebitCard">
+    <Key>
+      <PropertyRef Name="MaThe" />
+    </Key>
+    <Property Name="MaThe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="DebitCard_history" Relationship="Self.FK_DebitCard_history_DebitCard" FromRole="DebitCard" ToRole="DebitCard_history" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_DebitCard_KhachHang" FromRole="DebitCard" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="DebitCard_history">
+    <Key>
+      <PropertyRef Name="MaGiaoDich_DebitCard" />
+    </Key>
+    <Property Name="MaGiaoDich_DebitCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaTheDebitCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SoTien" Type="Int32" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="DebitCard" Relationship="Self.FK_DebitCard_history_DebitCard" FromRole="DebitCard_history" ToRole="DebitCard" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="CMND" Type="Int32" />
+    <Property Name="SoDu" Type="Int32" />
+    <Property Name="ChiNhanhMoTaiKhoan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TaiKhoanDangNhap" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ChiNhanhNganHang" Relationship="Self.FK_KhachHang_ChiNhanhNganHang" FromRole="KhachHang" ToRole="ChiNhanhNganHang" />
+    <NavigationProperty Name="CreditCards" Relationship="Self.FK_CreditCard_KhachHang" FromRole="KhachHang" ToRole="CreditCard" />
+    <NavigationProperty Name="DebitCards" Relationship="Self.FK_DebitCard_KhachHang" FromRole="KhachHang" ToRole="DebitCard" />
+    <NavigationProperty Name="PhieuChuyenTiens" Relationship="Self.FK_PhieuChuyenTien_KhachHang" FromRole="KhachHang" ToRole="PhieuChuyenTien" />
+    <NavigationProperty Name="PhieuChuyenTiens1" Relationship="Self.FK_PhieuChuyenTien_KhachHang1" FromRole="KhachHang" ToRole="PhieuChuyenTien" />
+    <NavigationProperty Name="PhieuGuiTiens" Relationship="Self.FK_PhieuGuiTien_KhachHang" FromRole="KhachHang" ToRole="PhieuGuiTien" />
+    <NavigationProperty Name="PhieuRutTiens" Relationship="Self.FK_PhieuRutTien_KhachHang" FromRole="KhachHang" ToRole="PhieuRutTien" />
+    <NavigationProperty Name="SoTietKiems" Relationship="Self.FK_SoTietKiem_KhachHang" FromRole="KhachHang" ToRole="SoTietKiem" />
+  </EntityType>
+  <EntityType Name="LichSuGiaoDich">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaGiaoDich" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoaiGiaoDich" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LoaiGiaoDich1" Relationship="Self.FK_LichSuGiaoDich_LoaiGiaoDich" FromRole="LichSuGiaoDich" ToRole="LoaiGiaoDich" />
+    <NavigationProperty Name="PhieuChuyenTien" Relationship="Self.FK_LichSuGiaoDich_PhieuChuyenTien" FromRole="LichSuGiaoDich" ToRole="PhieuChuyenTien" />
+    <NavigationProperty Name="PhieuGuiTien" Relationship="Self.FK_LichSuGiaoDich_PhieuGuiTien" FromRole="LichSuGiaoDich" ToRole="PhieuGuiTien" />
+    <NavigationProperty Name="PhieuNopTienVaoSoTietKiem" Relationship="Self.FK_LichSuGiaoDich_PhieuNopTienVaoSoTietKiem" FromRole="LichSuGiaoDich" ToRole="PhieuNopTienVaoSoTietKiem" />
+    <NavigationProperty Name="PhieuRutTien" Relationship="Self.FK_LichSuGiaoDich_PhieuRutTien" FromRole="LichSuGiaoDich" ToRole="PhieuRutTien" />
+  </EntityType>
+  <EntityType Name="LoaiGiaoDich">
+    <Key>
+      <PropertyRef Name="MaLoaiGiaoDich" />
+    </Key>
+    <Property Name="MaLoaiGiaoDich" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenLoaiGiaoDich" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LichSuGiaoDiches" Relationship="Self.FK_LichSuGiaoDich_LoaiGiaoDich" FromRole="LoaiGiaoDich" ToRole="LichSuGiaoDich" />
+  </EntityType>
+  <EntityType Name="LoaiNhanVien">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK_NhanVien_NhanVien" FromRole="LoaiNhanVien" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="LoaiSoTietKiem">
+    <Key>
+      <PropertyRef Name="MaLoaiSoTietKiem" />
+    </Key>
+    <Property Name="MaLoaiSoTietKiem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenLoaiSoTietKiem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="SoTietKiems" Relationship="Self.FK_SoTietKiem_LoaiSoTietKiem" FromRole="LoaiSoTietKiem" ToRole="SoTietKiem" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNhanVien" />
+    </Key>
+    <Property Name="MaNhanVien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CMND" Type="Int32" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="ThuocChiNhanh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LoaiNhanVien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ChiNhanhNganHang" Relationship="Self.FK_NhanVien_ChiNhanhNganHang" FromRole="NhanVien" ToRole="ChiNhanhNganHang" />
+    <NavigationProperty Name="LoaiNhanVien1" Relationship="Self.FK_NhanVien_NhanVien" FromRole="NhanVien" ToRole="LoaiNhanVien" />
+    <NavigationProperty Name="PhieuChuyenTiens" Relationship="Self.FK_PhieuChuyenTien_NhanVien" FromRole="NhanVien" ToRole="PhieuChuyenTien" />
+    <NavigationProperty Name="PhieuGuiTiens" Relationship="Self.FK_PhieuGuiTien_NhanVien" FromRole="NhanVien" ToRole="PhieuGuiTien" />
+    <NavigationProperty Name="PhieuNopTienVaoSoTietKiems" Relationship="Self.FK_PhieuNopTienVaoSoTietKiem_SoTietKiem" FromRole="NhanVien" ToRole="PhieuNopTienVaoSoTietKiem" />
+    <NavigationProperty Name="PhieuRutTiens" Relationship="Self.FK_PhieuRutTien_NhanVien" FromRole="NhanVien" ToRole="PhieuRutTien" />
+  </EntityType>
+  <EntityType Name="PhieuChuyenTien">
+    <Key>
+      <PropertyRef Name="MaPhieuChuyenTien" />
+    </Key>
+    <Property Name="MaPhieuChuyenTien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NguoiChuyen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NguoiNhan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NgayChuyen" Type="DateTime" Precision="0" />
+    <Property Name="SoTienChuyen" Type="Int32" />
+    <Property Name="ChiNhanhChuyen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NhanVienThucHien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_PhieuChuyenTien_KhachHang" FromRole="PhieuChuyenTien" ToRole="KhachHang" />
+    <NavigationProperty Name="KhachHang1" Relationship="Self.FK_PhieuChuyenTien_KhachHang1" FromRole="PhieuChuyenTien" ToRole="KhachHang" />
+    <NavigationProperty Name="LichSuGiaoDiches" Relationship="Self.FK_LichSuGiaoDich_PhieuChuyenTien" FromRole="PhieuChuyenTien" ToRole="LichSuGiaoDich" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_PhieuChuyenTien_NhanVien" FromRole="PhieuChuyenTien" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="PhieuGuiTien">
+    <Key>
+      <PropertyRef Name="MaPhieuGuiTien" />
+    </Key>
+    <Property Name="MaPhieuGuiTien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NguoiGui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SoTien" Type="Int32" />
+    <Property Name="NgayGui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HinhThucGui" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NhanVienThucHien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ChiNhanhThucHien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_PhieuGuiTien_KhachHang" FromRole="PhieuGuiTien" ToRole="KhachHang" />
+    <NavigationProperty Name="LichSuGiaoDiches" Relationship="Self.FK_LichSuGiaoDich_PhieuGuiTien" FromRole="PhieuGuiTien" ToRole="LichSuGiaoDich" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_PhieuGuiTien_NhanVien" FromRole="PhieuGuiTien" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="PhieuNopTienVaoSoTietKiem">
+    <Key>
+      <PropertyRef Name="MaPhieuNopTien" />
+    </Key>
+    <Property Name="MaPhieuNopTien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaSoTietKiem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SoTien" Type="Int32" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="NhanVienThucHien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ChiNhanhThucHienGiaoDich" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LichSuGiaoDiches" Relationship="Self.FK_LichSuGiaoDich_PhieuNopTienVaoSoTietKiem" FromRole="PhieuNopTienVaoSoTietKiem" ToRole="LichSuGiaoDich" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_PhieuNopTienVaoSoTietKiem_SoTietKiem" FromRole="PhieuNopTienVaoSoTietKiem" ToRole="NhanVien" />
+    <NavigationProperty Name="SoTietKiem" Relationship="Self.FK_PhieuNopTienVaoSoTietKiem_SoTietKiem1" FromRole="PhieuNopTienVaoSoTietKiem" ToRole="SoTietKiem" />
+  </EntityType>
+  <EntityType Name="PhieuRutTien">
+    <Key>
+      <PropertyRef Name="MaPhieuRutTien" />
+    </Key>
+    <Property Name="MaPhieuRutTien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SoTien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NguoiRut" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NgayRut" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ChiNhanhThucHien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NhanVienThucHien" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_PhieuRutTien_KhachHang" FromRole="PhieuRutTien" ToRole="KhachHang" />
+    <NavigationProperty Name="LichSuGiaoDiches" Relationship="Self.FK_LichSuGiaoDich_PhieuRutTien" FromRole="PhieuRutTien" ToRole="LichSuGiaoDich" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_PhieuRutTien_NhanVien" FromRole="PhieuRutTien" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="SoTietKiem">
+    <Key>
+      <PropertyRef Name="MaSoTietKiem" />
+    </Key>
+    <Property Name="MaSoTietKiem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NgayMoSo" Type="DateTime" Precision="0" />
+    <Property Name="NgayHetHan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SoDu" Type="Int32" />
+    <Property Name="LoaiSo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_SoTietKiem_KhachHang" FromRole="SoTietKiem" ToRole="KhachHang" />
+    <NavigationProperty Name="LoaiSoTietKiem" Relationship="Self.FK_SoTietKiem_LoaiSoTietKiem" FromRole="SoTietKiem" ToRole="LoaiSoTietKiem" />
+    <NavigationProperty Name="PhieuNopTienVaoSoTietKiems" Relationship="Self.FK_PhieuNopTienVaoSoTietKiem_SoTietKiem1" FromRole="SoTietKiem" ToRole="PhieuNopTienVaoSoTietKiem" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ThamSo">
+    <Key>
+      <PropertyRef Name="MaThamSo" />
+    </Key>
+    <Property Name="GiaTri" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Kieu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MaThamSo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenThamSo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TruSoNganHang">
+    <Key>
+      <PropertyRef Name="MaTruSo" />
+    </Key>
+    <Property Name="MaTruSo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenTruSo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ChiNhanhNganHangs" Relationship="Self.FK_ChiNhanhNganHang_TruSoNganHang" FromRole="TruSoNganHang" ToRole="ChiNhanhNganHang" />
+  </EntityType>
+  <Association Name="FK_ChiNhanhNganHang_TruSoNganHang">
+    <End Role="TruSoNganHang" Type="Self.TruSoNganHang" Multiplicity="0..1" />
+    <End Role="ChiNhanhNganHang" Type="Self.ChiNhanhNganHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TruSoNganHang">
+        <PropertyRef Name="MaTruSo" />
+      </Principal>
+      <Dependent Role="ChiNhanhNganHang">
+        <PropertyRef Name="TruSoNganHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KhachHang_ChiNhanhNganHang">
+    <End Role="ChiNhanhNganHang" Type="Self.ChiNhanhNganHang" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiNhanhNganHang">
+        <PropertyRef Name="MaChiNhanhNganHang" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="ChiNhanhMoTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanVien_ChiNhanhNganHang">
+    <End Role="ChiNhanhNganHang" Type="Self.ChiNhanhNganHang" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiNhanhNganHang">
+        <PropertyRef Name="MaChiNhanhNganHang" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="ThuocChiNhanh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreditCard_history_CreditCard">
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="0..1" />
+    <End Role="CreditCard_history" Type="Self.CreditCard_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CreditCard">
+        <PropertyRef Name="MaThe" />
+      </Principal>
+      <Dependent Role="CreditCard_history">
+        <PropertyRef Name="MaTheCreditCard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreditCard_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DebitCard_history_DebitCard">
+    <End Role="DebitCard" Type="Self.DebitCard" Multiplicity="0..1" />
+    <End Role="DebitCard_history" Type="Self.DebitCard_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DebitCard">
+        <PropertyRef Name="MaThe" />
+      </Principal>
+      <Dependent Role="DebitCard_history">
+        <PropertyRef Name="MaTheDebitCard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DebitCard_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="DebitCard" Type="Self.DebitCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DebitCard">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuChuyenTien_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="PhieuChuyenTien" Type="Self.PhieuChuyenTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="PhieuChuyenTien">
+        <PropertyRef Name="NguoiChuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuChuyenTien_KhachHang1">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="PhieuChuyenTien" Type="Self.PhieuChuyenTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="PhieuChuyenTien">
+        <PropertyRef Name="NguoiNhan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuGuiTien_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="PhieuGuiTien" Type="Self.PhieuGuiTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="PhieuGuiTien">
+        <PropertyRef Name="NguoiGui" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuRutTien_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="PhieuRutTien" Type="Self.PhieuRutTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="PhieuRutTien">
+        <PropertyRef Name="NguoiRut" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SoTietKiem_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="SoTietKiem" Type="Self.SoTietKiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="SoTietKiem">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichSuGiaoDich_LoaiGiaoDich">
+    <End Role="LoaiGiaoDich" Type="Self.LoaiGiaoDich" Multiplicity="0..1" />
+    <End Role="LichSuGiaoDich" Type="Self.LichSuGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiGiaoDich">
+        <PropertyRef Name="MaLoaiGiaoDich" />
+      </Principal>
+      <Dependent Role="LichSuGiaoDich">
+        <PropertyRef Name="LoaiGiaoDich" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichSuGiaoDich_PhieuChuyenTien">
+    <End Role="PhieuChuyenTien" Type="Self.PhieuChuyenTien" Multiplicity="0..1" />
+    <End Role="LichSuGiaoDich" Type="Self.LichSuGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuChuyenTien">
+        <PropertyRef Name="MaPhieuChuyenTien" />
+      </Principal>
+      <Dependent Role="LichSuGiaoDich">
+        <PropertyRef Name="MaGiaoDich" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichSuGiaoDich_PhieuGuiTien">
+    <End Role="PhieuGuiTien" Type="Self.PhieuGuiTien" Multiplicity="0..1" />
+    <End Role="LichSuGiaoDich" Type="Self.LichSuGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuGuiTien">
+        <PropertyRef Name="MaPhieuGuiTien" />
+      </Principal>
+      <Dependent Role="LichSuGiaoDich">
+        <PropertyRef Name="MaGiaoDich" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichSuGiaoDich_PhieuNopTienVaoSoTietKiem">
+    <End Role="PhieuNopTienVaoSoTietKiem" Type="Self.PhieuNopTienVaoSoTietKiem" Multiplicity="0..1" />
+    <End Role="LichSuGiaoDich" Type="Self.LichSuGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNopTienVaoSoTietKiem">
+        <PropertyRef Name="MaPhieuNopTien" />
+      </Principal>
+      <Dependent Role="LichSuGiaoDich">
+        <PropertyRef Name="MaGiaoDich" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichSuGiaoDich_PhieuRutTien">
+    <End Role="PhieuRutTien" Type="Self.PhieuRutTien" Multiplicity="0..1" />
+    <End Role="LichSuGiaoDich" Type="Self.LichSuGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuRutTien">
+        <PropertyRef Name="MaPhieuRutTien" />
+      </Principal>
+      <Dependent Role="LichSuGiaoDich">
+        <PropertyRef Name="MaGiaoDich" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanVien_NhanVien">
+    <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiNhanVien">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="LoaiNhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SoTietKiem_LoaiSoTietKiem">
+    <End Role="LoaiSoTietKiem" Type="Self.LoaiSoTietKiem" Multiplicity="0..1" />
+    <End Role="SoTietKiem" Type="Self.SoTietKiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSoTietKiem">
+        <PropertyRef Name="MaLoaiSoTietKiem" />
+      </Principal>
+      <Dependent Role="SoTietKiem">
+        <PropertyRef Name="LoaiSo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuChuyenTien_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuChuyenTien" Type="Self.PhieuChuyenTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="PhieuChuyenTien">
+        <PropertyRef Name="NguoiChuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuGuiTien_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuGuiTien" Type="Self.PhieuGuiTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="PhieuGuiTien">
+        <PropertyRef Name="NhanVienThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuNopTienVaoSoTietKiem_SoTietKiem">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuNopTienVaoSoTietKiem" Type="Self.PhieuNopTienVaoSoTietKiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="PhieuNopTienVaoSoTietKiem">
+        <PropertyRef Name="NhanVienThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuRutTien_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuRutTien" Type="Self.PhieuRutTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="PhieuRutTien">
+        <PropertyRef Name="NhanVienThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuNopTienVaoSoTietKiem_SoTietKiem1">
+    <End Role="SoTietKiem" Type="Self.SoTietKiem" Multiplicity="0..1" />
+    <End Role="PhieuNopTienVaoSoTietKiem" Type="Self.PhieuNopTienVaoSoTietKiem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoTietKiem">
+        <PropertyRef Name="MaSoTietKiem" />
+      </Principal>
+      <Dependent Role="PhieuNopTienVaoSoTietKiem">
+        <PropertyRef Name="MaSoTietKiem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NganHangEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiNhanhNganHangs" EntityType="Self.ChiNhanhNganHang" />
+    <EntitySet Name="CreditCards" EntityType="Self.CreditCard" />
+    <EntitySet Name="CreditCard_history" EntityType="Self.CreditCard_history" />
+    <EntitySet Name="DebitCards" EntityType="Self.DebitCard" />
+    <EntitySet Name="DebitCard_history" EntityType="Self.DebitCard_history" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="LichSuGiaoDiches" EntityType="Self.LichSuGiaoDich" />
+    <EntitySet Name="LoaiGiaoDiches" EntityType="Self.LoaiGiaoDich" />
+    <EntitySet Name="LoaiNhanViens" EntityType="Self.LoaiNhanVien" />
+    <EntitySet Name="LoaiSoTietKiems" EntityType="Self.LoaiSoTietKiem" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="PhieuChuyenTiens" EntityType="Self.PhieuChuyenTien" />
+    <EntitySet Name="PhieuGuiTiens" EntityType="Self.PhieuGuiTien" />
+    <EntitySet Name="PhieuNopTienVaoSoTietKiems" EntityType="Self.PhieuNopTienVaoSoTietKiem" />
+    <EntitySet Name="PhieuRutTiens" EntityType="Self.PhieuRutTien" />
+    <EntitySet Name="SoTietKiems" EntityType="Self.SoTietKiem" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="ThamSoes" EntityType="Self.ThamSo" />
+    <EntitySet Name="TruSoNganHangs" EntityType="Self.TruSoNganHang" />
+    <AssociationSet Name="FK_ChiNhanhNganHang_TruSoNganHang" Association="Self.FK_ChiNhanhNganHang_TruSoNganHang">
+      <End Role="TruSoNganHang" EntitySet="TruSoNganHangs" />
+      <End Role="ChiNhanhNganHang" EntitySet="ChiNhanhNganHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KhachHang_ChiNhanhNganHang" Association="Self.FK_KhachHang_ChiNhanhNganHang">
+      <End Role="ChiNhanhNganHang" EntitySet="ChiNhanhNganHangs" />
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanVien_ChiNhanhNganHang" Association="Self.FK_NhanVien_ChiNhanhNganHang">
+      <End Role="ChiNhanhNganHang" EntitySet="ChiNhanhNganHangs" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreditCard_history_CreditCard" Association="Self.FK_CreditCard_history_CreditCard">
+      <End Role="CreditCard" EntitySet="CreditCards" />
+      <End Role="CreditCard_history" EntitySet="CreditCard_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreditCard_KhachHang" Association="Self.FK_CreditCard_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="CreditCard" EntitySet="CreditCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DebitCard_history_DebitCard" Association="Self.FK_DebitCard_history_DebitCard">
+      <End Role="DebitCard" EntitySet="DebitCards" />
+      <End Role="DebitCard_history" EntitySet="DebitCard_history" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DebitCard_KhachHang" Association="Self.FK_DebitCard_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="DebitCard" EntitySet="DebitCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuChuyenTien_KhachHang" Association="Self.FK_PhieuChuyenTien_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="PhieuChuyenTien" EntitySet="PhieuChuyenTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuChuyenTien_KhachHang1" Association="Self.FK_PhieuChuyenTien_KhachHang1">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="PhieuChuyenTien" EntitySet="PhieuChuyenTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuGuiTien_KhachHang" Association="Self.FK_PhieuGuiTien_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="PhieuGuiTien" EntitySet="PhieuGuiTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuRutTien_KhachHang" Association="Self.FK_PhieuRutTien_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="PhieuRutTien" EntitySet="PhieuRutTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SoTietKiem_KhachHang" Association="Self.FK_SoTietKiem_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="SoTietKiem" EntitySet="SoTietKiems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichSuGiaoDich_LoaiGiaoDich" Association="Self.FK_LichSuGiaoDich_LoaiGiaoDich">
+      <End Role="LoaiGiaoDich" EntitySet="LoaiGiaoDiches" />
+      <End Role="LichSuGiaoDich" EntitySet="LichSuGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichSuGiaoDich_PhieuChuyenTien" Association="Self.FK_LichSuGiaoDich_PhieuChuyenTien">
+      <End Role="PhieuChuyenTien" EntitySet="PhieuChuyenTiens" />
+      <End Role="LichSuGiaoDich" EntitySet="LichSuGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichSuGiaoDich_PhieuGuiTien" Association="Self.FK_LichSuGiaoDich_PhieuGuiTien">
+      <End Role="PhieuGuiTien" EntitySet="PhieuGuiTiens" />
+      <End Role="LichSuGiaoDich" EntitySet="LichSuGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichSuGiaoDich_PhieuNopTienVaoSoTietKiem" Association="Self.FK_LichSuGiaoDich_PhieuNopTienVaoSoTietKiem">
+      <End Role="PhieuNopTienVaoSoTietKiem" EntitySet="PhieuNopTienVaoSoTietKiems" />
+      <End Role="LichSuGiaoDich" EntitySet="LichSuGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichSuGiaoDich_PhieuRutTien" Association="Self.FK_LichSuGiaoDich_PhieuRutTien">
+      <End Role="PhieuRutTien" EntitySet="PhieuRutTiens" />
+      <End Role="LichSuGiaoDich" EntitySet="LichSuGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanVien_NhanVien" Association="Self.FK_NhanVien_NhanVien">
+      <End Role="LoaiNhanVien" EntitySet="LoaiNhanViens" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SoTietKiem_LoaiSoTietKiem" Association="Self.FK_SoTietKiem_LoaiSoTietKiem">
+      <End Role="LoaiSoTietKiem" EntitySet="LoaiSoTietKiems" />
+      <End Role="SoTietKiem" EntitySet="SoTietKiems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuChuyenTien_NhanVien" Association="Self.FK_PhieuChuyenTien_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuChuyenTien" EntitySet="PhieuChuyenTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuGuiTien_NhanVien" Association="Self.FK_PhieuGuiTien_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuGuiTien" EntitySet="PhieuGuiTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNopTienVaoSoTietKiem_SoTietKiem" Association="Self.FK_PhieuNopTienVaoSoTietKiem_SoTietKiem">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuNopTienVaoSoTietKiem" EntitySet="PhieuNopTienVaoSoTietKiems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuRutTien_NhanVien" Association="Self.FK_PhieuRutTien_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuRutTien" EntitySet="PhieuRutTiens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNopTienVaoSoTietKiem_SoTietKiem1" Association="Self.FK_PhieuNopTienVaoSoTietKiem_SoTietKiem1">
+      <End Role="SoTietKiem" EntitySet="SoTietKiems" />
+      <End Role="PhieuNopTienVaoSoTietKiem" EntitySet="PhieuNopTienVaoSoTietKiems" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
