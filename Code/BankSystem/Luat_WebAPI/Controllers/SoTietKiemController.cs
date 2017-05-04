@@ -59,6 +59,63 @@ namespace WebApi.Controllers
             return Request.CreateResponse(HttpStatusCode.Created,"Thanh cong.");
         }
 
+        //Api get thông tin một sổ tiết kiệm dựa vào mã sổ.
+        [HttpGet]
+        [Route("api/sotietkiem/getmotsotietkiem/{MaSoTietKiem}")]
+        public IHttpActionResult GetThongTinMotSoTietKiem(string MaSoTietKiem)
+        {
+            using (NganHangEntities ctx = new NganHangEntities())
+            {
+                if(ctx.SoTietKiems.Any(o =>o.MaSoTietKiem == MaSoTietKiem))
+                {
+                    var list = ctx.SoTietKiems
+                    .Select(c => new
+                    {
+                        c.MaSoTietKiem,
+                        c.MaKH,
+                        c.NgayMoSo,
+                        c.NgayHetHan,
+                        c.SoDu,
+                        c.LoaiSo,
+                        c.Status
+                    })
+                    .Where(c => c.MaSoTietKiem == MaSoTietKiem)
+                    .ToList();
+                    return Ok(list);
+                }                
+            }
+            return Ok("null");
+        }
+
+        //Api update thông tin sổ tiết kiệm.
+        [HttpPost]
+        [Route("api/sotietkiem/update")]
+        public HttpResponseMessage UpdateThongTinSoTietKiem([FromBody]SoTietKiem SoTietKiem)
+        {
+            using (NganHangEntities ctx = new NganHangEntities())
+            {
+                if (ctx.SoTietKiems.Any(o => o.MaSoTietKiem == SoTietKiem.MaSoTietKiem))
+                {
+                    var stk = ctx.SoTietKiems.Find(SoTietKiem.MaSoTietKiem);
+                    try
+                    {
+                        stk.MaKH = SoTietKiem.MaKH;
+                        stk.NgayMoSo = SoTietKiem.NgayMoSo;
+                        stk.NgayHetHan = SoTietKiem.NgayHetHan;
+                        stk.SoDu = SoTietKiem.SoDu;
+                        stk.Status = SoTietKiem.Status;
+                        stk.LoaiSo = SoTietKiem.LoaiSo;
+                        ctx.SaveChanges();
+                        return Request.CreateResponse(HttpStatusCode.Accepted,"ok");
+                    }
+                    catch (Exception ex)
+                    { }
+                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest,"fail");
+            }
+        }
+
+
         //Hàm tự tăng mã sổ tiết kiệm.        
         public string PhatSinhMa()
         {

@@ -34,3 +34,4 @@ C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSyste
 C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.DataAccessLayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.DataAccessLayer\obj\Debug\BS.MM.DataAccessLayer.dll
 C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.DataAccessLayer\obj\Debug\BS.MM.DataAccessLayer.pdb
+C:\Users\caiba\Desktop\DHTN\He thong thong tin hien dai\Git Nhóm\Code\BankSystem\BS.MM.DataAccessLayer\obj\Debug\BS.MM.DataAccessLayer.csprojResolveAssemblyReference.cache
