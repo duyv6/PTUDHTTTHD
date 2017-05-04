@@ -109,12 +109,74 @@ namespace WebApi.Controllers
                         return Request.CreateResponse(HttpStatusCode.Accepted,"ok");
                     }
                     catch (Exception ex)
-                    { }
+                    {
+                        //Code bắt lỗi
+                    }
                 }
+                else
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "so tiet kiem khong ton tai");
                 return Request.CreateResponse(HttpStatusCode.BadRequest,"fail");
             }
         }
 
+        //Api nộp tiền vào sổ tiết kiệm
+        [HttpPost]
+        [Route("api/sotietkiem/noptien")]
+        public HttpResponseMessage NopTien([FromBody] PhieuNopTienVaoSoTietKiem PhieuNopTienVaoSoTietKiem)
+        {
+            using (NganHangEntities ctx = new NganHangEntities())
+            {
+                // Kiem tra ma khach hang nay co ton tai chua?
+                if (ctx.SoTietKiems.Any(o => o.MaSoTietKiem == PhieuNopTienVaoSoTietKiem.MaSoTietKiem))
+                {
+                    var ma = PhatSinhMaPhieuNopTien();// Gọi hàm sinh mã sổ tiết kiệm.
+
+                    // Kiem tra Ma so tiet kiem da ton tai chua?
+                    if (!ctx.PhieuNopTienVaoSoTietKiems.Any(o => o.MaPhieuNopTien == ma))
+                    {
+                        try
+                        {
+                            PhieuNopTienVaoSoTietKiem.MaPhieuNopTien = ma;
+                            ctx.PhieuNopTienVaoSoTietKiems.Add(PhieuNopTienVaoSoTietKiem);
+                            ctx.SaveChanges();
+                            if(TangTien(PhieuNopTienVaoSoTietKiem.MaSoTietKiem,PhieuNopTienVaoSoTietKiem.SoTien) == true)
+                            {
+                                return Request.CreateResponse(HttpStatusCode.Created,"Thanh cong");
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            //Code bắt lỗi
+                        }
+                    }
+                    else
+                        return Request.CreateResponse(HttpStatusCode.Found, "Ma phieu nop tien tiet kiem da ton tai!");
+                }
+                else
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Ma so tiet kiem nay khong ton tai!");
+            }
+            return Request.CreateResponse(HttpStatusCode.Created, "That bai");
+        }       
+
+        //Hàm tăng tiền trong sổ tiết kiệm
+        public bool TangTien(string MaSoTietKiem, int? SoTien)
+        {
+            using (NganHangEntities ctx = new NganHangEntities())
+            {
+                try
+                {
+                    var soTietKiem = ctx.SoTietKiems.Find(MaSoTietKiem);
+                    soTietKiem.SoDu += SoTien;
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    //Code bắt lỗi.
+                }
+            }
+            return false;
+        }
 
         //Hàm tự tăng mã sổ tiết kiệm.        
         public string PhatSinhMa()
@@ -137,6 +199,29 @@ namespace WebApi.Controllers
             }
             while (ctx.SoTietKiems.Any(o => o.MaSoTietKiem == temp3) && temp3.CompareTo("null") == 0);
             
+            return temp3;
+        }
+        //Hàm tự tăng mã phiếu nộp tiền.
+        public string PhatSinhMaPhieuNopTien()
+        {
+            NganHangEntities ctx = new NganHangEntities();
+
+            var count = ctx.PhieuNopTienVaoSoTietKiems.Count();
+            if (count == 0)
+            {
+                return "PNTSTK1";
+            }
+            var temp = (from c in ctx.PhieuNopTienVaoSoTietKiems orderby c.MaPhieuNopTien descending select c).First().MaPhieuNopTien;
+
+            var temp3 = "null";
+            do
+            {
+                var temp2 = int.Parse(temp.Trim().Remove(0, 6));
+                temp2 += 1;
+                temp3 = "PNTSTK" + temp2.ToString();
+            }
+            while (ctx.PhieuNopTienVaoSoTietKiems.Any(o => o.MaPhieuNopTien == temp3) && temp3.CompareTo("null") == 0);
+
             return temp3;
         }
 
