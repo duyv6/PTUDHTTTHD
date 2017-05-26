@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank System - Đăng Nhập</title>   
+
+    <!--Ajax-->
+    <script src="assets/jquery-2.1.4.min.js"></script>
+    <script src="js/JavaScript.js"></script>
+    
+    <!--Bootstrap-->
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>   
+	    
+
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-md-12" id="header_login">
+            <a href="#"><img src="image/KeyBank-Logo.jpg"alt="logo" width="10%" height="10%" /></a>
+        </div><!--End div #header_login-->
+
+        <!--<div class="col-md-6">
+
+        </div>-->
+
+        <div class="" id="content_login">
+            <div class="row main">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <h1 class="title">Đăng Nhập</h1>
+                        <hr />
+                    </div>
+                </div> 
+                <div class="main-login main-center">
+
+                    <form class="form-horizontal">
+                        <div class="form-group">                                          
+                            <label for="username" class="cols-sm-2 control-label">Username</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" required autofocus/>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="cols-sm-2 control-label">Password</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" required/>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group ">
+                            <button type="submit" id="a" onclick="validation();" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                        </div>
+                        
+                    </form>
+
+                </div><!--End div .main-login .main-center-->
+            </div>
+        </div><!--End div #content_login-->
+
+        <!--End div #content_login-->
+        <!--<div class="col-md-4">
+
+        </div>-->
+        <div class="col-md-12" id="footer_login">         
+                
+                        <ul id="nav">
+                            <li><a href="#">Quy định</a></li>
+                            <li><a href="#">Điều khoản</a></li>
+                            <li><a href="#">Thông báo</a></li>
+                            <li><a href="#">Hướng dẫn sử dụng</a></li>
+                        </ul>                   
+                
+           
+        </div><!--End footer_login-->
+    </div>
+    
+ </body>
+
+</html>
